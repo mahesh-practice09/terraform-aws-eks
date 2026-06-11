@@ -57,14 +57,14 @@ resource "aws_security_group_rule" "bastion_rabbitmq" {
 
 
 # Frontend
-resource "aws_security_group_rule" "bastion_ingressalb" {
+resource "aws_security_group_rule" "bastion_ingress_alb" {
   type              = "ingress"
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
   # Where traffic is coming from
   source_security_group_id = data.aws_ssm_parameter.bastion_sg_id.value
-  security_group_id = data.aws_ssm_parameter.ingressalb_sg_id.value
+  security_group_id = data.aws_ssm_parameter.ingress_alb_sg_id.value
 }
 
 
